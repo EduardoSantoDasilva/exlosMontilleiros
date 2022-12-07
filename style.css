@@ -1,0 +1,184 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: rgb(15, 15, 15);
+}
+
+.disco{
+    position: relative;
+    display: block;
+    margin: 40px auto;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background-image: url('./imagens/montila.png');
+    background-size: cover;
+    box-shadow: 0 0 0 10px black;
+    animation: rotate 10s linear infinite;
+    animation-play-state: paused;
+}
+
+.controles{
+    width: 80%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: auto;
+    align-items: center;
+    margin-top: 20px;
+    border-radius: 20%;
+    background-color:rgba(6, 100, 6, 0.557);
+}
+
+.disco.play{
+    animation-play-state: running;
+}
+
+.disco::before{
+    content: '';
+    position: absolute;
+    top: 45%;
+    left: 42%;
+    transform: translate(-50% -50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #5f7a61;
+}
+
+.play-btn{
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: black;
+    cursor: pointer;
+    border: none;
+}
+
+.play-btn span{
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 30px;
+    border-radius: 2px;
+    background: #116c17;
+    transition: .5s;
+    clip-path: polygon(0 0 ,100% 0, 100% 100%,0% 100%);
+}
+
+.play-btn span:nth-child(2){
+    left: 55%;
+    transform-origin: center;
+}
+
+.play-btn.pause span:nth-child(2){
+    transform: translateY(-50%) scale(0);
+} 
+
+.play-btn.pause span:nth-child(1){
+    width: 35%;
+    left: 53%;
+    transform: translate(-50%, -50%);
+    border-radius: 0;
+    clip-path: polygon(0 0, 100% 50%, 100% 50%, 0% 100%);
+}
+
+.play-btn.pause{
+    animation: pulse 2s linear infinite;
+}
+
+@keyframes pulse {
+    0%{
+        box-shadow: 0;
+    }
+    50%{
+        box-shadow: 0 0 0 5px  rgba(255, 255, 255, 0.4);
+    };
+    100%{
+        box-shadow: 0 0 0 15px  rgba(255, 255, 255, 1);
+    };
+}
+
+.btn{
+    width: 40px;
+    height: 40px;
+    background: #d5eebb;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+}
+
+@keyframes rotate {
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(360deg);
+    };
+}
+
+.flexx{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.seek_slider, .vol-control {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 5px;
+    background: black;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+    
+  /* Modify the appearance of the slider thumb */
+  .seek_slider::-webkit-slider-thumb,
+  .vol-control::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: green;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+    
+  /* Change the opacity when mouse is hovered */
+  .seek_slider:hover,
+  .vol-control:hover {
+    opacity: 1.0;
+  }
+    
+  .seek_slider {
+    width: 90%;
+  }
+    
+  .vol-control {
+    width: 70%;
+  }
+
+  @media (max-width: 480px) {
+    .controles{
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin: auto;
+        align-items: center;
+        margin-top: 20px;
+        border-radius: 20%;
+        background-color:rgba(6, 100, 6, 0.557);
+    }
+  }
